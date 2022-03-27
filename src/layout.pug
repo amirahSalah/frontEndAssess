@@ -1,0 +1,48 @@
+//- global variables
+block variables
+  - var assets_base = '../images/';
+  - var styles_base = '../css/'
+  - var attrsHtml = { lang: `${ dir === 'rtl' ? 'ar' : 'en-US'}`, dir: dir || 'ltr' };
+  - var title = 'Try Pug';
+
+
+//- global styles
+include includes/ThemeStyles/ThemeStyle
+
+//- layout.pug
+doctype html
+html()&attributes(attrsHtml)
+  head
+
+    //- meta
+    block meta
+      meta(charset='utf-8')
+      meta(http-equiv='X-UA-Compatible' content='IE=edge')
+      meta(name='viewport' content='width=device-width, initial-scale=1')
+
+
+    //- favicon
+    block favicon
+      link(rel="shortcut icon" type="image/x-icon", href=`${assets_base}favicon.ico`)
+
+    //- styles
+    block styles
+      +ThemeStyle
+
+    //- title
+    title=title
+
+  body
+    block header
+      include includes/header
+
+    block hero
+      include includes/hero
+
+    //- only changed section
+    block content
+
+    block footer
+      include includes/footer
+    
+    //- script(src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js")

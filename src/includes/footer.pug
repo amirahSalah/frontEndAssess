@@ -1,0 +1,57 @@
+//- footer.pug
+footer.footer
+  .container-lg
+    .row
+      //- START footer about column
+      div.footer__about.col-12.col-sm-6.col-md-4
+        h2.footer__title About Us
+        p.footer__description Morbi eu purus eget tellus fringilla malesuada eget nec nisi. Etiam nec dolor porttitor, cursus elit quis, tristique erat.   Sed rhoncus molestie elit sit amet viverra. 
+        - const contactContent = [{type:"text", icon: `bi bi-geo-alt-fill`, text: '90-120 Swanston St,Melbourne VIC 3000, Australia'},{type:"tel", icon: `bi bi-telephone-fill`, text: '+61 3 9559 9559 or +61 3 9669 9669 '},{type:"mail", icon: `bi bi-envelope`, text: 'support@gtcreators.com'}]
+        ul.footer__contacts
+          each contact in contactContent
+            li.footer__contact
+              i.footer__contact__icon(class=contact.icon)
+              if contact.type == 'tel'
+                a(href=`tel:${contact.text}`)
+                  p.footer__contact__txt=contact.text
+              else if contact.type == 'mail'
+                a(href=`mailto:${contact.text}`)
+                  p.footer__contact__txt=contact.text
+              else
+                p.footer__contact__txt=contact.text
+      //- END footer about column
+
+      //- START footer news column
+      div.footer__news.col-12.col-sm-6.col-md-4
+        h2.footer__title Recent News
+        - const newsContent = [{image: `${assets_base}new-img.png`, title: 'Ut molestie quam erat, non finibus erat', date: '14/07/2016'},{image: `${assets_base}new-img.png`, title: 'Ut molestie quam erat, non finibus erat', date: '14/07/2016'},{image: `${assets_base}new-img.png`, title: 'Ut molestie quam erat, non finibus erat', date: '14/07/2016'}]
+        each news in newsContent
+          a.footer__news__box(href="javascript:void(0)")
+            div.footer__news__img
+              img(src=`${news.image}`, alt="news-img", )
+            div.footer__news__data
+              h3.footer__news__title=news.title
+              small.footer__news__date=news.date
+      //- END news column
+
+      //- START footer gallary column
+      div.footer__gallery.col-12.col-sm-6.col-md-4
+        h2.footer__title Our Gallery
+        - const gallaryContent = [{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`},{path: `${assets_base}gallary-img.png`}]
+        ul.footer__gallary__list.row
+          each image in gallaryContent
+            li.footer__gallary__img.col-3.col-sm-6.col-md-4.col-lg-3.pb-4
+              a(href="javascript:void(0)")
+                img(src=`${image.path}`, alt="gallary-img")
+      //- END footer gallary column
+
+//- START copy right
+div.footer__copyRight.py-4
+  p &#169; 2016 GTC. All rights reserved.
+//- END copy right
+  
+  
+    
+      
+
+  

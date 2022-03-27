@@ -1,0 +1,14 @@
+mixin ThemeStyle
+
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+  link(href='https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lato&family=Raleway:wght@700&display=swap' rel='stylesheet')
+
+
+  if dir !== 'rtl'
+    link(href=`${styles_base}main.min.css`, rel='stylesheet')
+  else
+    link(href=`${styles_base}main-rtl.min.css`, rel='stylesheet')
+  = '\n'
+
+  

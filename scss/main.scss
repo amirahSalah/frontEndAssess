@@ -1,0 +1,321 @@
+//START bootstrap variables overrides according to my design
+$primary: #fcca03;
+$secondary: #efc20f;
+$light: #f5f5f5;
+$dark: #303233;
+$progress-height: 5px;
+$progress-border-radius: 0;
+//END bootstrap variables overrides according to my design
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+//START global variables
+$title-color: #303233;
+$text-color: #7a7a7a;
+$helper-font: "Kaushan Script", cursive !important;
+$title-font: "Raleway", sans-serif !important;
+$text-font: "Lato", sans-serif !important;
+$copy-right-bg: #232424;
+//END global variables
+
+//START common styles
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  transition: color ease 0.3s;
+}
+@mixin paragraph($fontSize) {
+  color: $text-color;
+  font-size: $fontSize;
+  font-family: $text-font;
+}
+@mixin title($fontSize, $color) {
+  color: $color;
+  font-size: $fontSize;
+  font-family: $title-font;
+}
+@mixin helper($color, $fontSize) {
+  color: $color;
+  font-size: $fontSize;
+  font-family: $helper-font;
+}
+@mixin underline($left, $bgColor) {
+  content: "";
+  position: absolute;
+  background-color: $bgColor;
+  height: 1px;
+  width: 35px;
+  bottom: 0;
+  left: $left;
+  transform: translateX(-$left);
+  transition: width ease 0.5s;
+}
+@mixin underlineHover {
+  &:hover {
+    &:before {
+      width: 75px;
+    }
+    &:after {
+      width: 75px;
+    }
+  }
+}
+//END common styles
+
+//START header
+.header {
+  .header__logo,
+  .header__menuToggler {
+    max-width: 90px;
+  }
+  .header__menuToggler {
+    font-size: 40px;
+    cursor: pointer;
+    text-align: right;
+    color: $dark;
+  }
+}
+//END header
+
+//START hero section
+.hero {
+  background-color: $light;
+  padding: 130px 0;
+  .hero__helper {
+    @include helper($text-color, 18px);
+  }
+  .hero__pageTitle {
+    @include title(54px, $title-color);
+  }
+}
+//END hero section
+
+//START services section
+.services {
+  padding: 135px 0;
+  text-align: center;
+  .services__titleContainer {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .services__helper {
+      @include helper($title-color, 14px);
+    }
+    .services__title {
+      @include title(30px, $title-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      &:after {
+        @include underline(50%, $title-color);
+      }
+      @include underlineHover;
+    }
+    .services__description {
+      @include paragraph(12px);
+      max-width: 500px;
+      width: 100%;
+    }
+  }
+  .services__boxes {
+    .services__box {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      &:hover {
+        .services__box__image {
+          img {
+            transform: rotateZ(360deg);
+          }
+        }
+      }
+      .services__box__image {
+        img {
+          transition: transform ease 1s;
+        }
+      }
+      .services__box__content {
+        background-repeat: no-repeat;
+        background-size: contain;
+        text-align: left;
+        margin-left: 20px;
+        margin-bottom: 50px;
+        .services__box__title {
+          @include title(18px, $title-color);
+        }
+        .services__box__desc {
+          @include paragraph(14px);
+        }
+      }
+    }
+  }
+}
+//END services section
+
+//START facts & figures
+.factsFigures {
+  background-color: $primary;
+  padding: 45px 0;
+  .factsFigures__boxes {
+    margin-bottom: 0;
+    .factsFigures__box {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .factsFigures__box__title {
+        @include title(12px, $title-color);
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      .factsFigures__box__num {
+        @include title(30px, $title-color);
+      }
+    }
+  }
+}
+//END facts & figures
+
+//START about section
+.about {
+  padding: 100px 0;
+  .about__img {
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  .about__helper {
+    @include helper($title-color, 14px);
+  }
+  .about__title {
+    position: relative;
+    @include title(30px, $title-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    &:before {
+      @include underline(0, $title-color);
+    }
+    @include underlineHover;
+  }
+  .about__description {
+    @include paragraph(14px);
+  }
+  .about__progresses {
+    padding-top: 30px;
+    .about__progresses__bar {
+      position: relative;
+      height: 30px;
+      margin: 30px 0;
+      .progress-bar-animated {
+        transition: width ease 1s;
+      }
+    }
+    .about__progresses__title,
+    .about__progresses__percent {
+      position: absolute;
+      top: -25px;
+    }
+    .about__progresses__title {
+      left: 0;
+      @include title(12px, $title-color);
+    }
+    .about__progresses__percent {
+      right: 0;
+      @include title(14px, $title-color);
+    }
+  }
+}
+//END about section
+
+//START footer
+.footer {
+  padding: 100px 0;
+  background-color: $dark;
+  color: #fff;
+  .footer__title {
+    @include title(20px, #fff);
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    &:after {
+      @include underline(0, $primary);
+    }
+    @include underlineHover;
+  }
+  .footer__description {
+    @include paragraph(14px);
+    color: #fff;
+  }
+  .footer__contact {
+    display: flex;
+    &:hover {
+      .footer__contact__txt {
+        color: $primary;
+      }
+    }
+
+    .footer__contact__txt {
+      padding-left: 15px;
+      @include paragraph(14px);
+      color: #fff;
+      transition: color ease 0.3s;
+    }
+  }
+  .footer__news__box {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &:hover {
+      .footer__news__title,
+      .footer__news__date {
+        color: $primary;
+      }
+    }
+    .footer__news__img {
+      flex: 0 0 10%;
+      img {
+        width: 50px;
+        max-width: 100%;
+      }
+    }
+    .footer__news__data,
+    .footer__news__title {
+      transition: color ease 0.3s;
+    }
+    .footer__news__data {
+      flex: 0 0 90%;
+      padding-left: 20px;
+    }
+    .footer__news__title {
+      @include title(14px, #fff);
+      margin-bottom: 0;
+    }
+    .footer__news__date {
+      @include paragraph(10px);
+      color: #fff;
+    }
+  }
+}
+.footer__gallary__img {
+  img {
+    max-width: 100%;
+  }
+}
+.footer__copyRight {
+  background-color: $copy-right-bg;
+  text-align: center;
+  p {
+    @include paragraph(12px);
+    color: #646565;
+    margin-bottom: 0;
+  }
+}

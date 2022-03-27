@@ -1,0 +1,66 @@
+//- index.pug
+extends layout
+block content
+
+    //- START services section
+    section.services
+        .container-lg
+            div.services__titleContainer
+                small.services__helper We are Avonmore
+                h2.services__title What We Do
+                p.services__description Proin in aliquam risus. Donec quis urna eleifend, laoreet purus vel, dapibus leo. Sed vel lacus arcu. Morbi metus sapien, tincidunt eget massa ac, dignissim lacinia magna.
+
+            - const servicesContent = [{title: 'Layered PSD', parag: 'Maecenas vel tortor vehicula nulla cursus consectetur. Vestibulum convallis hendrerit sollicitudin euismod nisi.', icon: `${assets_base}icon-1.png`, bg: `${assets_base}bg-1.png`},{title: 'Innovative Technology', parag: 'Sed sit amet faucibus lacus, sed rutrum augue. Proin vel purus risus. Sed tincidunt lacus eget mauris tempor elementum. ', icon: `${assets_base}icon-2.png`, bg: `${assets_base}bg-2.png`},{title: 'Unique & Clean', parag: 'Proin iaculis justo eget sem porta sollicitudin. Nulla posuere odio mauris, et fermentum nulla sagittis quis. Nam pellentesque nisl quis.', icon: `${assets_base}icon-3.png`, bg: `${assets_base}bg-3.png`},{title: 'Totally Responsive', parag: 'Maecenas vel tortor vehicula nulla cursus consectetur. Vestibulum convallis hendrerit sollicitudin euismod nisi .', icon: `${assets_base}icon-4.png`, bg: `${assets_base}bg-4.png`},{title: 'Easy Customization', parag: 'Sed sit amet faucibus lacus, sed rutrum augue. Proin vel purus risus. Sed tincidunt lacus eget mauris tempor elementum. ', icon: `${assets_base}icon-5.png`, bg: `${assets_base}bg-5.png`},{title: 'Free 24/7 Support', parag: 'Proin iaculis justo eget sem porta sollicitudin. Nulla posuere odio mauris, et fermentum nulla sagittis quis. Nam pellentesque nisl quis.', icon: `${assets_base}icon-6.png`, bg: `${assets_base}bg-6.png`}];
+            ul.services__boxes.row
+                each elem in servicesContent
+                    li.services__box.col-12.col-sm-6.col-md-4
+                        div.services__box__image
+                            img(src=elem.icon, alt="icon",)
+                        div.services__box__content(style=`background-image:url(${elem.bg})`)
+                            h3.services__box__title=elem.title
+                            p.services__box__desc=elem.parag
+    //- END services section
+
+    //- START facts & figures section
+    section.factsFigures
+        .container-lg
+            - const factsFiguresContent = [{title: 'Coffe Cups', num: 503, bg: `${assets_base}icon-7.png`},{title: 'Projects', num: 75, bg:`${assets_base}icon-8.png`},{title: 'Working Days', num: 250, bg: `${assets_base}icon-9.png`},{title: 'happy Clients', num: 68, bg:`${assets_base}icon-10.png`}]
+            ul.factsFigures__boxes.row
+                each fact, key in factsFiguresContent
+                    li.factsFigures__box.col-12.col-sm-6.col-md-3(style=`background-image:url(${fact.bg})`)
+                        h4.factsFigures__box__title=fact.title
+                        h2(id=`fact_${key}`).factsFigures__box__num=fact.num
+    //- END facts & figures section
+
+    //- START about content
+    section.about
+        .container-lg
+            div.about__row.row
+                div.about__img.col-12.col-sm-6.align-self-center
+                    img(src=`${assets_base}monitor.png`, alt="monitor")
+                div.about__content.col-12.col-sm-6.align-self-end
+                    small.about__helper About us
+                    h2.about__title Some Facts About Avonmore
+                    p.about__description Etiam eget nulla rhoncus, accumsan felis eget, sollicitudin quam. Fusce venenatis mi sapien, ac tincidunt orci mattis vitae. Donec ac fermentum sapien. Donec tristique ante sit amet velit lacinia elementum. Vestibulum egestas fermentum porttitor.
+                    div.about__progresses
+                        - const progressesContent = [{title: 'Web Design', percent: 95},{title: 'Graphic Design', percent: 90},{title: 'Photography', percent: 85}]
+                        each bar, key in progressesContent
+                            div.about__progresses__bar
+                                div.progress
+                                    div.progress-bar.progress-bar-animated.bg-primary(role="progressbar" style=`width: 0%;` aria-valuenow=`${bar.percent}` aria-valuemin="0" aria-valuemax="100")
+                                        span.about__progresses__title=bar.title
+                                        span(id=`progress__bar__num__${key}`).about__progresses__percent=bar.percent+'%'
+                       
+    //- END about content
+
+
+    
+
+
+
+
+
+           
+
+
+
